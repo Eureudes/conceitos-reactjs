@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import api from './services/api';
 
 import "./styles.css";
@@ -14,12 +14,12 @@ function App() {
 
   async function handleAddRepository() {
     const response = await api.post('repositories', {
-      title: 'Conceitos React',
-      url: 'http://github.com/eureudes/react',
-      techs: ['NodeJS', 'ReactJS']
+      title: 'Umbriel',
+      url: 'https://github.com/rocketseat/umbriel',
+      techs: ['Node.js', 'ReactJS']
     })
 
-    setRepositories([...respositories, response.data]);
+    setRepositories([ ...repositories, response.data ]);
   }
 
   async function handleRemoveRepository(id) {
@@ -38,11 +38,11 @@ function App() {
         {repositories.map(repository => (
           <li key={repository.id}>
             {repository.title}
-        
-          <button onClick={() => handleRemoveRepository(repository.id)}>
-            Remover
-          </button>
-        </li>
+
+            <button onClick={() => handleRemoveRepository(repository.id)}>
+              Remover
+            </button>
+          </li>
         ))}
       </ul>
 
